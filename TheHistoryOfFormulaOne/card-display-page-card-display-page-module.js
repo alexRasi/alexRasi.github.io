@@ -28,7 +28,7 @@ var SeasonStandingsFetchingService = /** @class */ (function (_super) {
         return _this;
     }
     SeasonStandingsFetchingService.prototype.getData = function (year, limit, offset) {
-        return this.http.get("http://ergast.com/api/f1/" + year.toString() + "/driverStandings.json?limit=" + limit + "&offset=" + offset);
+        return this.http.get("https://ergast.com/api/f1/" + year.toString() + "/driverStandings.json?limit=" + limit + "&offset=" + offset);
     };
     SeasonStandingsFetchingService.prototype.getTransformedData = function (parameter, limit, offset) {
         var _this = this;

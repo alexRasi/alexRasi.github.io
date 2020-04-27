@@ -386,7 +386,7 @@ var ConstructorItemFetchingService = /** @class */ (function (_super) {
     function ConstructorItemFetchingService(http) {
         var _this = _super.call(this) || this;
         _this.http = http;
-        _this.url = 'http://ergast.com/api/f1/constructors';
+        _this.url = 'https://ergast.com/api/f1/constructors';
         return _this;
     }
     ConstructorItemFetchingService.prototype.getData = function (constructorId) {
@@ -443,7 +443,7 @@ var ConstructorsFetchingService = /** @class */ (function (_super) {
     function ConstructorsFetchingService(http) {
         var _this = _super.call(this) || this;
         _this.http = http;
-        _this.url = 'http://ergast.com/api/f1/constructors.json';
+        _this.url = 'https://ergast.com/api/f1/constructors.json';
         return _this;
     }
     ConstructorsFetchingService.prototype.getData = function (parameter, limit, offset) {
@@ -522,7 +522,7 @@ var DriverItemFetchingService = /** @class */ (function (_super) {
     function DriverItemFetchingService(http) {
         var _this = _super.call(this) || this;
         _this.http = http;
-        _this.url = 'http://ergast.com/api/f1/drivers';
+        _this.url = 'https://ergast.com/api/f1/drivers';
         return _this;
     }
     DriverItemFetchingService.prototype.getData = function (driverId) {
@@ -580,7 +580,7 @@ var DriversFetchingService = /** @class */ (function (_super) {
     function DriversFetchingService(http) {
         var _this = _super.call(this) || this;
         _this.http = http;
-        _this.url = 'http://ergast.com/api/f1/drivers.json';
+        _this.url = 'https://ergast.com/api/f1/drivers.json';
         return _this;
     }
     DriversFetchingService.prototype.getData = function (parameter, limit, offset) {
@@ -638,7 +638,7 @@ var SeasonsFetchingService = /** @class */ (function (_super) {
     function SeasonsFetchingService(http) {
         var _this = _super.call(this) || this;
         _this.http = http;
-        _this.url = 'http://ergast.com/api/f1/seasons.json';
+        _this.url = 'https://ergast.com/api/f1/seasons.json';
         return _this;
     }
     SeasonsFetchingService.prototype.getData = function (parameter, limit, offset) {
