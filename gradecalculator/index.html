@@ -1,0 +1,170 @@
+<html>
+  <head>
+    <meta
+      http-equiv="cache-control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+
+    <style>
+      input[type="text"] {
+        font-size: 1.5rem;
+        padding: 1rem;
+        width: 100%;
+        margin-bottom: 1rem;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      @media (min-width: 375px) {
+        input[type="text"] {
+          font-size: 2.8rem;
+          padding: 1.2rem;
+        }
+
+        p {
+          font-size: 3.4rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        input[type="text"] {
+          font-size: 40x;
+          padding: 1.5rem;
+          max-width: 200px;
+        }
+
+        p {
+          font-size: 32px;
+        }
+      }
+
+      .flex {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      body {
+        padding: 24px;
+      }
+      button {
+        outline: 0;
+      }
+
+      .calculateButton {
+        background-color: yellowgreen;
+        height: 120px;
+        width: 200px;
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 36px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Grades Calculator</h1>
+    <div>
+      <div>
+        <p>Τωρινός βαθμός</p>
+        <input autocomplete="on" type="text" id="gradeInput" />
+      </div>
+      <div>
+        <p>
+          Σύνολο ECTS
+          <span style="color: rgb(103, 102, 102); font-size: 14px"
+            >(χωρίς τα ECTS των μαθημάτων που δεν μετράνε στον βαθμό. Αν
+            υπάρχουν στο σύνολο της πλατφόρμας σου, αφαίρεσε τα πριν την
+            καταχώρηση)</span
+          >
+        </p>
+        <input autocomplete="on" type="text" id="ectsInput" />
+      </div>
+    </div>
+    <div id="potentialGrades">
+      <div class="flex">
+        <div>
+          <p>Βαθμός εποόμενου μαθήματος:</p>
+          <input autocomplete="on" type="text" id="nextGradeInput" />
+        </div>
+        <div>
+          <p>ECTS επόμενου μαθήματος:</p>
+          <input autocomplete="on" type="text" id="nextEctsInput" />
+        </div>
+      </div>
+    </div>
+
+    <!-- <button id="addGrade">Add</button> -->
+
+    <button class="calculateButton" id="calculateButton">Υπολογισμός</button>
+
+    <p id="totalGrade">Νέος βαθμός: -</p>
+    <script>
+      const gradeInput = document.getElementById("gradeInput");
+      const ectsInput = document.getElementById("ectsInput");
+      const nextGradeInput = document.getElementById("nextGradeInput");
+      const nextEctsInput = document.getElementById("nextEctsInput");
+      const totalSpan = document.getElementById("totalGrade");
+      const calculateButton = document.getElementById("calculateButton");
+
+      function setTotalGrade() {
+        const grade = Number(gradeInput.value);
+        const ects = Number(ectsInput.value);
+        const nextGrade = Number(nextGradeInput.value);
+        const nextEcts = Number(nextEctsInput.value);
+
+        const calculatedGrade = (
+          (grade * ects + nextGrade * nextEcts) /
+          (ects + nextEcts)
+        ).toFixed(3);
+
+        if (calculatedGrade == "NaN") {
+          totalSpan.innerHTML = "Λάθος στην καταχώρηση";
+        } else {
+          totalSpan.innerHTML = "Νέος βαθμός: " + calculatedGrade;
+        }
+      }
+
+      // gradeInput.addEventListener("input", setTotalGrade);
+      // ectsInput.addEventListener("input", setTotalGrade);
+      // nextGradeInput.addEventListener("input", setTotalGrade);
+      // nextEctsInput.addEventListener("input", setTotalGrade);
+
+      // document
+      //   .getElementById("addGrade")
+      //   .addEventListener("click", function () {
+      //     // Create a div
+      //     var div = document.createElement("div");
+
+      //     // Create a file input
+      //     var par = document.createElement("paragraph");
+      //     par.innerHTML = "aaaaa";
+
+      //     // Create a text input
+      //     var text = document.createElement("input");
+      //     text.setAttribute("type", "text");
+      //     text.setAttribute("name", "text"); // you may want to change this
+
+      //     // add the file and text to the div
+      //     div.appendChild(par);
+      //     div.appendChild(text);
+
+      //     //Append the div to the container div
+      //     document.getElementById("potentialGrades").appendChild(div);
+      //   });
+      document.querySelector("body").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          setTotalGrade();
+        }
+      });
+      calculateButton.addEventListener("click", setTotalGrade);
+    </script>
+  </body>
+</html>
